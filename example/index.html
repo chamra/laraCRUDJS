@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LaraCRUD</title>
+
+    <!-- external third party css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/datatables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+     <!-- external third party css -->
+
+     <!-- custom css -->
+     <link rel="stylesheet" href="css/style.css">
+     <!-- custom css -->
+
+     <!-- laravel csrf-token  -->
+     <meta name="csrf-token" content="token">
+</head>
+<body>
+ 
+ 
+    <div class="container">
+        <div class="row justify-content-center">
+            <h2>LaraCRUD</h2>
+        </div>
+        <div class="row justify-content-end">
+            <button class="btn btn-outline-success" onclick="crud.onclickAdd()">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+            </button>
+            <br>
+        </div>
+        <div class="row">
+            <div class="col">
+             <table class="table">
+                 <thead>
+                     <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Start date</th>
+                        <th>Action</th>
+
+                     </tr>
+                 </thead>
+                 <tbody>
+                    <tr>
+                        <td>Tiger Nixon</td>
+                        <td>System Architect</td>
+                        <td>Edinburgh</td>
+                        <td>61</td>
+                        <td>2011/04/25</td>
+                        <td>
+                            <button class="btn btn-outline-info" onclick="crud.onClickEdit(1, $(this))">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button class="btn btn-outline-danger">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Garrett Winters</td>
+                        <td>Accountant</td>
+                        <td>Tokyo</td>
+                        <td>63</td>
+                        <td>2011/07/25</td>
+                        <td>
+                            <button class="btn btn-outline-info" onclick="crud.onClickEdit(1, $(this))">
+                                <i class="fa fa-pencil" aria-hidden="true" ></i>
+                            </button>
+                            <button class="btn btn-outline-danger" onclick="crud.onClickDelete(1, $(this))">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Ashton Cox</td>
+                        <td>Junior Technical Author</td>
+                        <td>San Francisco</td>
+                        <td>66</td>
+                        <td>2009/01/12</td>
+                        <td>
+                            <button class="btn btn-outline-info" onclick="crud.onClickEdit(1, $(this))">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button class="btn btn-outline-danger" onclick="crud.onClickDelete(1, $(this))">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Cedric Kelly</td>
+                        <td>Senior Javascript Developer</td>
+                        <td>Edinburgh</td>
+                        <td>22</td>
+                        <td>2012/03/29</td>
+                        <td>
+                            <button class="btn btn-outline-info" onclick="crud.onClickEdit(1, $(this))">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button class="btn btn-outline-danger" onclick="crud.onClickDelete(1, $(this))">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Airi Satou</td>
+                        <td>Accountant</td>
+                        <td>Tokyo</td>
+                        <td>33</td>
+                        <td>2008/11/28</td>
+                        <td>
+                            <button class="btn btn-outline-info" onclick="crud.onClickEdit(1, $(this))">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button class="btn btn-outline-danger">
+                                <i class="fa fa-trash" aria-hidden="true" onclick="crud.onClickDelete(1, $(this))"></i>
+                            </button>
+                        </td>
+                    </tr>
+                 </tbody>
+             </table>   
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <code>
+                Please note that RESTapi function would not like this you need implement this in Laravel
+             </code>
+        </div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="formModal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">FORM TO CREATE AND UPDATE</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                  <label for="">Name</label>
+                  <input type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                  <label for="">Position</label>
+                  <input type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                  <label for="">Office</label>
+                  <input type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                  <label for="">Age</label>
+                  <input type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                  <label for="">Start date</label>
+                  <input type="date" class="form-control">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-outline-primary" id="btnSubmit" onclick="crud.submitData()">
+                SUMBMIT
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!-- external third party js -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/datatables.min.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/notify.js"></script>
+     <!-- external third party js -->
+
+     <script src="laraCRUD.js"></script>
+     <script src="main.js"></script>
+
+</body>
+</html>
