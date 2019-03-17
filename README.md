@@ -37,3 +37,5 @@ JavaScript Helper library for laravel CRUD functions
 <br>[jquery](https://jquery.com/)
 <br>[Notify.js](https://notifyjs.jpillora.com/)
 <br>[Datatables](https://www.datatables.net/)
+
+## [DEV](https://dev.to/cha_m_ra/laracrudjs-33n4) Post
